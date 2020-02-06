@@ -1,4 +1,5 @@
 import os
+import time
 from heapq import merge
 
 inputDirectory = os.getcwd()+os.path.sep+'input'
@@ -10,6 +11,7 @@ def sortList(numbersInList):
     numbersInList.sort()
 
 def processFiles(fileName, numbersInList):
+    time.sleep(0.1)
     readFromFile(fileName,numbersInList)
     sortList(numbersInList)
     listOfLists.append(numbersInList)
@@ -41,9 +43,3 @@ def main():
 
 if __name__== "__main__":
     main()
-
-
-
-
-
-
