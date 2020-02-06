@@ -10,8 +10,14 @@ afterKwayMerge = list()
 def sortingFiles(numbersInList):
     numbersInList.sort()
 
+
+#read and sort individual files add it to list of list    
 async def awaitProcessFiles(filename,numbersInList):
+    
+    #force asyncio to process files in parallel
     await asyncio.sleep(.1)
+    
+    #reading from the file
     with open(inputDirectory+os.path.sep+filename, 'r') as fin:
         for line in fin:
             numbersInList.append(int(line.strip("\n"),10))            
@@ -19,12 +25,14 @@ async def awaitProcessFiles(filename,numbersInList):
     sortingFiles(numbersInList)
     appendToList(numbersInList)
 
+# k-way merge sort
 def kWayMerge(*listOfLists):
     return list(merge(*listOfLists))
 
 def appendToList(numbersInList):
     listOfLists.append(numbersInList)
 
+#Writing to the final sorted file
 def writeToFile(AfterKwayMerge):
     filename = outputDirectory+os.path.sep+"sorted_async.txt"
     with open(filename,'w') as fout:
