@@ -6,7 +6,7 @@ To run this:
 
 Note::
 
-With the input files given, async is slower as it's own overhead. For smaller files async is actually slower. The times are listed below.
+With the input files given, async is slower as it adds it's own overhead. For smaller files async is actually slower. The times are listed below.
 
 ```
 time python3 ext_merge_sort.py 
@@ -22,7 +22,7 @@ user	0m0.064s
 sys	0m0.020s
 ```
 
-To simulate large files, sleep(0.1) has been introduced to prove that async is faster. With this the times are as follows
+To simulate large files, sleep(0.1) has been introduced to the sync program to prove that async is faster. With this the times are as follows
 
 ```
 time python3 ext_merge_sort.py 
