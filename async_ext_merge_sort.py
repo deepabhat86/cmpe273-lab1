@@ -11,7 +11,7 @@ def sortingFiles(numbersInList):
     numbersInList.sort()
 
 async def awaitProcessFiles(filename,numbersInList):
-    await asyncio.sleep(0.0001)
+    await asyncio.sleep(.1)
     with open(inputDirectory+os.path.sep+filename, 'r') as fin:
         for line in fin:
             numbersInList.append(int(line.strip("\n"),10))            
