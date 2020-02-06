@@ -1,5 +1,4 @@
 import asyncio
-import aiofiles
 import os
 from heapq import merge
 
@@ -8,21 +7,22 @@ outputDirectory = os.getcwd()+os.path.sep+'output'
 listOfLists = list()
 afterKwayMerge = list()
 
-async def sortingFiles(numbersInList):
+def sortingFiles(numbersInList):
     numbersInList.sort()
 
 async def awaitProcessFiles(filename,numbersInList):
-    async with aiofiles.open(inputDirectory+os.path.sep+filename, 'r') as fin:
-        async for line in fin:
+    await asyncio.sleep(0.0001)
+    with open(inputDirectory+os.path.sep+filename, 'r') as fin:
+        for line in fin:
             numbersInList.append(int(line.strip("\n"),10))            
     fin.close() 
-    await sortingFiles(numbersInList)
-    await appendToList(numbersInList)
+    sortingFiles(numbersInList)
+    appendToList(numbersInList)
 
 def kWayMerge(*listOfLists):
     return list(merge(*listOfLists))
 
-async def appendToList(numbersInList):
+def appendToList(numbersInList):
     listOfLists.append(numbersInList)
 
 def writeToFile(AfterKwayMerge):
